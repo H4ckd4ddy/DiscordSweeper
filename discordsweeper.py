@@ -24,15 +24,21 @@ async def demineur(ctx):  # Init Discord bot command
 	for case in range(0, len(grid)):  # For each case of grid
 		if grid[case] != MINE:  # If it's not a mine
 			number = 0  # Init counter for mines around
+
+			# Check placement on line to not check case on other side of grid
+			placement_on_line = (case%size)
+			place_on_left = (len(grid*2)) if placement_on_line == 0 else 1
+			place_on_right = (len(grid*2)) if placement_on_line == (size - 1) else 1
+
 			to_check = [  # List all case around the current
-				(case-size)-1,	# Top left
-				(case-size),	# Top
-				(case-size)+1,	# Top right
-				case-1,			# Left
-				case+1,			# Right
-				(case+size)-1,	# Bottom left
-				(case+size),	# Bottom
-				(case+size)+1	# Bottom right
+				(case-size)-place_on_left,	# Top left
+				(case-size),				# Top
+				(case-size)+place_on_right,	# Top right
+				case-place_on_left,			# Left
+				case+place_on_right,		# Right
+				(case+size)-place_on_left,	# Bottom left
+				(case+size),				# Bottom
+				(case+size)+place_on_right	# Bottom right
 			]
 			for cursor in to_check:  # For each case to check
 				if cursor >= 0 and cursor < len(grid):  # If not outside the grid
