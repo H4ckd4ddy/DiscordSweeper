@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 
 MINE = ':boom:'
-NUMBERS = [':zero:',':one:',':two:',':three:',':four:',':five:',':six:',':seven:',':height:']
+NUMBERS = [':zero:',':one:',':two:',':three:',':four:',':five:',':six:',':seven:',':eight:']
 SPOILER = '||'
 
 size = 10
